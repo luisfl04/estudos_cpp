@@ -81,8 +81,41 @@ class Exemplos{
   }
 
 
+  // Calculo de aumento de salário de um determinado funcionário em uma empresa de acordo com o seu cargo:
+  string nome_funcionario, cargo_funcionario;
+  double salario_base, salario_aumentado;
+  int porcentagem_aumento;
 
+  cout << "Olá, qual o seu nome?\nDigite aqui -> ";
+  cin >> nome_funcionario;
 
+  cout << "\n\nQual o seu cargo?\nDigite aqui -> ";
+  cin >> cargo_funcionario;
 
+  // Obtendo o valor de porcentagem do aumento:
+  if(cargo_funcionario == "gerente"){
+      porcentagem = 0.10;
+  }
+  else if (cargo_funcionario == "engenheiro"){
+    porcentagem = 0.20;
+  }
+  else if(cargo_funcionario == "programador"){
+    porcentagem = 0.50;
+  }
+  else{
+    porcentagem = 0.40;
+  }
 
+  // Obtendo o salário base:
+  cout << "\n\nCerto, agora me diga o seu salário base.\nDigite aqui -> ";
+  cin >> salario_base;
+
+  // Calculando salário com aumento:
+  salario_aumentado = salario_aumentado + (salario_base * porcentagem);
+  cout << "O valor de seu salário com o aumento devido é -> " << salario_aumentado << endl;
+
+  // calculando diferença:
+  diferenca_entre_salario = salario_aumentado - salario_base;
+  cout << "\n\n A diferença entre o seu salário base e o salário com aumento é -> " << diferenca_entre_salario << endl;
+  
 }
