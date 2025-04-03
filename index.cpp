@@ -1,61 +1,127 @@
 #include <iostream>
 #include <random>
 
-
 using namespace std;
 
-int main(){
+struct Funcionario{
+  string nome_funcionario, cargo_funcionario;
+  double salario_base, salario_aumentado;
+};
 
-  int quantidade_calculos;
-  cout << "Ola, quantos salarios de funcionarios de sua empresa voce quer calcular hoje?\nDigite aqui -> ";
-  cin >> quantidade_calculos;
+double calcularPorcentagemAumento(string cargo){
+    /* Função que verifica e retorno um valor de porcentagem de acordo com o cargo passado.*/
 
-  // Verificando se usuário digitou um número válido:
-  while (quantidade_calculos <= 0){
-      cout << quantidade_calculos << " nao eh um numero valido\nDigite um novo numero aqui -> ";
-      cin >> quantidade_calculos;
-  }
-
-  // Calculando os salários:
-  for(int i = 0; i < quantidade_calculos; i++){
-    cout << "\n# Calculo de salario do funcionario " << i + 1;
-
-    string nome_funcionario, cargo_funcionario;
-    double salario_base, salario_aumentado, diferenca_entre_salario;
-    int porcentagem_aumento;
-
-    cout << "\nOlá, qual o seu nome?\nDigite aqui -> ";
-    cin >> nome_funcionario;
-
-    cout << "\n\nQual o seu cargo?\nDigite aqui -> ";
-    cin >> cargo_funcionario;
-
-    // Obtendo o valor de porcentagem do aumento:
-    if(cargo_funcionario == "gerente"){
-        porcentagem_aumento = 0.10;
+    if(cargo == "gerente"){
+        return 0.10;
     }
-    else if (cargo_funcionario == "engenheiro"){
-      porcentagem_aumento = 0.20;
+    else if (cargo == "engenheiro"){
+      return 0.20;
     }
-    else if(cargo_funcionario == "programador"){
-      porcentagem_aumento = 0.50;
+    else if(cargo == "programador"){
+      return 0.50;
     }
     else{
-      porcentagem_aumento = 0.40;
+      return 0.40;
     }
 
-    // Obtendo o salário base:
-    cout << "\n\nCerto, agora me diga o seu salário base.\nDigite aqui -> ";
-    cin >> salario_base;
+}
 
-    // Calculando salário com aumento:
-    salario_aumentado = salario_aumentado + (salario_base * porcentagem_aumento);
-    cout << "O valor de seu salário com o aumento devido é -> " << salario_aumentado << endl;
+double calcularAumentoSalario(double salario_base, double porcentagem_aumento){
+  // Calculando o salário com aumento:
+  return salario_base + (salario_base * porcentagem_aumento);
+}
 
-    // calculando diferença:
-    diferenca_entre_salario = salario_aumentado - salario_base;
-    cout << "\n\n A diferença entre o seu salário base e o salário com aumento é -> " << diferenca_entre_salario << endl;
-  }
+double calcularDiferencaEntreSalario(double salario_base, double salario_aumentado){
+  return salario_base - salario_aumentado;
+}
+
+int main(){
+    Funcionario funcionario[10];
+
+    // 4* Implementação do calculo de salario de funcionarios usando struct:
+
+    double diferenca_entre_salario, porcentagem_aumento;
+    int condicao_parada, indice_funcionario_atual = 0;
+
+    do{
+      // Obtendo nome e cargo do funcionario:
+      cout << "\n# Calculo do funcionario " << indice_funcionario_atual + 1 << "\n\nOla, qual o seu nome?\nDigite aqui -> ";
+      cin >> funcionario[indice_funcionario_atual].nome_funcionario;
+
+      cout << "\n\nQual o seu cargo?\nDigite aqui -> ";
+      cin >> funcionario[indice_funcionario_atual].cargo_funcionario;
+
+      // Obtendo a porcentagem de aumento com base no cargo:
+      double porcentagem_aumento = calcularPorcentagemAumento(funcionario[indice_funcionario_atual].cargo_funcionario);
+
+      // Obtendo o salário base:
+      cout << "\n\nCerto, agora me diga o seu salario base.\nDigite aqui -> ";
+      cin >> funcionario[indice_funcionario_atual].salario_base;
+
+      // Calculando salário com aumento:
+      funcionario[indice_funcionario_atual].salario_aumentado = calcularAumentoSalario(funcionario[indice_funcionario_atual].salario_base, porcentagem_aumento);
+      cout << "O valor de seu salario com o aumento devido eh -> " << funcionario[indice_funcionario_atual].salario_aumentado;
+
+      // calculando diferença:
+      diferenca_entre_salario = calcularDiferencaEntreSalario(funcionario[indice_funcionario_atual].salario_aumentado, funcionario[indice_funcionario_atual].salario_base);
+      cout << "\n\nA diferenca entre o seu salario base e o salario com aumento eh -> " << diferenca_entre_salario << endl;
+
+      // Verificando se usuário deseja prosseguir com o cálculo:
+      cout << "\n\nDeseja calcular um novo salario?\n1 - Sim -- 0 - Nao\nDigite aqui -> ";
+      cin >> condicao_parada;
+      cout << "Condicao de parada passada -> " << condicao_parada << endl;
+      while(condicao_parada != 0 && condicao_parada != 1){
+        cout << "\nO valor " << condicao_parada << " Nao eh um valor de escolha valido!\nDigite novamente aqui -> ";
+        cin >> condicao_parada;
+      }
+
+      // Incrementando índice
+      indice_funcionario_atual++;
+    }while(condicao_parada == 1 && indice_funcionario_atual < 10);
+
+    // Imprimindo dados armazenados após os calculos:
+    for(int i = 0; i < indice_funcionario_atual; i++){
+        cout << "\nDados do funcionario " << i + 1 << ":";
+        cout << "\nNome -> " << funcionario[i].nome_funcionario;
+        cout << "\nCargo -> " << funcionario[i].cargo_funcionario;
+        cout << "\nSalario base -> " << funcionario[i].salario_base;
+        cout << "\nSalario aumentado -> " << funcionario[i].salario_aumentado;
+        cout << "\n";
+    }
+
+    // Calculando o numero de gerentes, programadores e engenheiros na empresa:
+    int quantidade_engenheiros = 0, quantidade_programadores = 0, quantidade_gerentes = 0, quantidade_cargo_desconhecido = 0;
+    for(int i = 0; i < indice_funcionario_atual; i++){
+      if(funcionario[indice_funcionario_atual].cargo_funcionario == "engenheiro"){
+        quantidade_engenheiros++;
+      }
+      else if(funcionario[indice_funcionario_atual].cargo_funcionario == "programador"){
+        quantidade_programadores++;
+      }
+      else if(funcionario[indice_funcionario_atual].cargo_funcionario == "gerente"){
+        quantidade_gerentes++;
+      }
+      else{
+        quantidade_cargo_desconhecido++;
+      }
+    }
+
+    cout << "Numero de engenheiros na empresa -> " << quantidade_engenheiros;
+    cout << "\nNumero de programadores na empresa ->  " << quantidade_programadores;
+    cout << "\nNumero de gerentes -> " << quantidade_gerentes;
+    cout << "\nQuantidade de cargos desconhecidos -> " << quantidade_cargo_desconhecido;
+
+    // Calculando custo geral antes e depois dos aumentos calculados:
+    double valor_geral_base = 0.0, valor_geral_aumentado = 0.0;
+    cout << "Indice de funcionarios cadastrados antes de fazer o calculo dos gastos da empresa -> " << indice_funcionario_atual;
+    for(int i = 0; i < indice_funcionario_atual; i++){
+        valor_geral_base = valor_geral_base + funcionario[indice_funcionario_atual].salario_base;
+        valor_geral_aumentado = valor_geral_base + funcionario[indice_funcionario_atual].salario_aumentado;
+    }
+
+    // Mostrando o valor dos salários:
+    cout << "Custo de salario base para a empresa -> " << valor_geral_base;
+    cout << "\nCusto de salario apos os aumentados -> " << valor_geral_aumentado;
 
   return 0;
 }
