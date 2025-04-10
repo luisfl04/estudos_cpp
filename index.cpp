@@ -1,10 +1,11 @@
 // Libs:
 #include <iostream>
-#include "classes/construtores/Turma.cpp"
+#include "classes/implementacao_basica/Funcionario.h"
 
 
 int main(){
-  Turma turma("Araújo");
-  turma.getMenuOpcoes();
+  Funcionario exemplo;
+  exemplo.definirInformacoesFuncionario();
+  exemplo.toString();
   return 0;
 }
