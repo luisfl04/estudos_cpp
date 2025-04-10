@@ -1,13 +1,10 @@
 // Libs:
 #include <iostream>
-#include "classes/implementacao_basica/Funcionario.h"
+#include "classes/construtores/Turma.cpp"
 
 
 int main(){
-  Funcionario func;
-
-  func.setNome("Pedro");
-  cout << "Nome definido -> " << func.getNome();
-
+  Turma turma("Araújo");
+  turma.getMenuOpcoes();
   return 0;
 }

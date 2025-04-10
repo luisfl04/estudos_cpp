@@ -13,6 +13,7 @@ private:
   int idade;
   double salario;
   string cargo;
+  
 public:
   // Get:
   string getNome();
