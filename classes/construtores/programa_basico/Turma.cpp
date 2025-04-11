@@ -57,7 +57,6 @@ public:
 
   void limparTerminal(){
     // Limpa as informações do terminal
-
     #ifdef _WIN32
       system("cls");
     #else
@@ -66,8 +65,8 @@ public:
   }
 
   void fecharPrograma(){
-    cout << "Fechando o programa...";
     limparTerminal();
+    cout << "Fechando o programa...";
     sleep(3);
   }
 
@@ -156,7 +155,5 @@ public:
     cout << "Aluno Criado com sucesso! Aguarde...\n\n";
     sleep(3);
   }
-
-
 
 };
