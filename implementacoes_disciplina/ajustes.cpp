@@ -17,10 +17,10 @@ public:
 
   // Construtor:
   Funcionario(string nome_passado, string cargo_passado, int idade_passada, double salario_passado){
-    nome = nome_passado;
-    idade = idade_passada;
-    salario = salario_passado;
-    cargo = cargo_passado;
+    nome = "Desconhecido";
+    idade = 0;
+    salario = 0.0;
+    cargo = "Indefinido";
   }
 
   // Getters:
@@ -66,11 +66,12 @@ public:
     cout << "salario -> " << getSalario() << "\n";
   }
 
-  // Declarações de protótipos de classes:
+  // Declarações de protótipos de métodos:
   void definirAumentoSalario(double porcentagem_aumento);
   void calcularSalarioAumentadoArray();
   void exibirCustoSalario();
   void exibirQuantidadeGerenteEngenheiro();
+  definirInformacoesFuncionario();
 
 };
 
@@ -158,4 +159,43 @@ void Funcionario::exibirQuantidadeGerenteEngenheiro(){
   cout << "Quantidade de engenheiros -> " << quantidade_engenheiros << "\n";
   cout << "Quantidade de gerentes -> " << quantidade_gerentes << "\n";
   cout << "Quantidade de cargos desconhecidos encontrados -> " << cargo_desconhecido << "\n";
+}
+
+void Funcionario::definirInformacoesFuncionario(){
+  /* Método que obtém dados do usuário via teclado e define na instância da classe e define usando os
+  métodos SET definidos na classe: */
+
+  // Variáveis auxiliares que irão armazenar as informações de forma temporária para definir na classe.
+  string nome_funcionario;
+  double salario_funcionario;
+  int idade_funcionario;
+  string cargo_funcionario;
+
+  // Obtendo valores:
+  cout << "Digite o nome do funcionario -> ";
+  cin >> nome_funcionario;
+  cout << "\nInforme sua idade -> ";
+  cin >> idade_funcionario;
+  cout << "\nInforme o cargo que você exerce na empresa -> ";
+  cin >> cargo_funcionario;
+  verificarCargoFuncionario(cargo_funcionario);
+  cout << "\nDigite o seu salário -> ";
+  cin >> salario_funcionario;
+
+  // Definindo os valores na classe:
+  double salario_calculado_funcionario = calcularSalarioFuncionario(salario_funcionario, cargo_funcionario);
+  setSalario(salario_calculado_funcionario);
+  setNome(nome_funcionario);
+  setIdade(idade_funcionario);
+
+  cout << "\nDados definidos com sucesso!";
+}
+
+
+int main(){
+  Funcionario funcionario_exemplo;
+  funcionario_exemplo.definirInformacoesFuncionario();
+  funcionario_exemplo.toString();
+
+  return 0;
 }
