@@ -16,11 +16,11 @@ private:
 public:
 
   // Construtor:
-  Funcionario(string nome_passado, string cargo_passado, int idade_passada, double salario_passado){
-    nome = "Desconhecido";
-    idade = 0;
-    salario = 0.0;
-    cargo = "Indefinido";
+  Funcionario(string nome_passado = "Indefinido", string cargo_passado = "Indefinido", int idade_passada = 0, double salario_passado = 0.0){
+    nome = nome_passado;
+    idade = idade_passada;
+    salario = salario_passado;
+    cargo = cargo_passado;
   }
 
   // Getters:
@@ -71,7 +71,8 @@ public:
   void calcularSalarioAumentadoArray();
   void exibirCustoSalario();
   void exibirQuantidadeGerenteEngenheiro();
-  definirInformacoesFuncionario();
+  void definirInformacoesFuncionario();
+  double calcularSalarioFuncionario(double salario_funcionario, string cargo);
 
 };
 
@@ -178,7 +179,6 @@ void Funcionario::definirInformacoesFuncionario(){
   cin >> idade_funcionario;
   cout << "\nInforme o cargo que você exerce na empresa -> ";
   cin >> cargo_funcionario;
-  verificarCargoFuncionario(cargo_funcionario);
   cout << "\nDigite o seu salário -> ";
   cin >> salario_funcionario;
 
