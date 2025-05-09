@@ -13,9 +13,9 @@ class ProfessorHorista : public Professor{
     public:
     ProfessorHorista(const string nome_passado, const string matricula_passada, int idade_passada,
     int total_horas_informada, float valor_salario_hora_informado
-    ): Professor(nome_passado, matricula_passada, idade_passada){
+    ) : Professor(nome_passado, matricula_passada, idade_passada) {
         total_horas = total_horas_informada;
-        valor_salario_hora = valor_salario_hora_informado; 
+        valor_salario_hora = valor_salario_hora_informado;
     }
 
     // Getters:

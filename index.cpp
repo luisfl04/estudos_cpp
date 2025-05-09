@@ -1,11 +1,10 @@
 // Libs:
 #include <iostream>
-#include "classes/implementacao_basica/Funcionario.h"
-
+#include "implementacoes_disciplina/ajustes_08_05/exemplo_heranca/ProfessorHorista.cpp"
+using namespace std;
 
 int main(){
-  Funcionario exemplo;
-  exemplo.definirInformacoesFuncionario();
-  exemplo.toString();
+  ProfessorHorista exemplo("Alexandro","A87G", 30, 30, 133.98);
+  cout << "Nome do professor 'horista' -> " << exemplo.getNome();
   return 0;
 }
