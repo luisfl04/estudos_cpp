@@ -33,6 +33,6 @@ class Veiculo{
     }
 
     // Métodos abstratos:
-    virtual void setNomeTipo() = 0;
+    virtual void setNomeTipo(string novo_tipo) = 0;
 
 };
