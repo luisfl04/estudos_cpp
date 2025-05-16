@@ -25,7 +25,7 @@ class Funcionario : public Pessoa {
         }
 
         // Método abstrato da classe pai:
-        void setCPF(string novo_cpf) const override{
+        void setCPF(string novo_cpf) override{
             this->cpf = novo_cpf;
         }
 

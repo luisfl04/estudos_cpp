@@ -9,10 +9,7 @@ using namespace std;
 class Interface{
 
 public:
-
     
-
-
     void limparTerminal(){
         // Limpa as informações do terminal
         #ifdef _WIN32

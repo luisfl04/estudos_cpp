@@ -50,7 +50,8 @@ public:
         cout << "CPF: " << cpf << endl;
     }
 
-    virtual void setCPF(string cpf_passado) const = 0;
+    // Método abstrato relacionado ao atributo cpf:
+    virtual void setCPF(string cpf_passado) = 0;
 
 
     // Destrutor virtual para garantir destruição correta
