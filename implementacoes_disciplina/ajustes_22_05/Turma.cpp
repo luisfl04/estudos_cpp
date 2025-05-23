@@ -13,6 +13,10 @@ string Turma::getNomeTurma(){
     return this->nome_turma;
 }
 
+float Turma::getMediaAlunosTurma(){
+    return this->media_alunos_turma;
+}
+
 void Turma::setNomeTurma(string novo_nome_turma){
     this->nome_turma = novo_nome_turma;
 }
@@ -53,5 +57,21 @@ void Turma::cadastrarAlunos(){
 }
 
 float Turma::obterMediaTurma(){
-    
+    float soma_notas_turma = 0.0, media_alunos_turma;
+    for(int i = 0; i < 7; i++){
+        soma_notas_turma += alunos_turma[i].getMediaNotas();
+    }
+
+    media_alunos_turma = soma_notas_turma / 7;
+    this->setMediaAlunosTurma(media_alunos_turma);
+    cout << "A media dos alunos da turma é -> " << this->getMediaAlunosTurma() << "\n";
+    return getMediaAlunosTurma();
+}
+
+void Turma::obterAlunosAcimaMedia(){
+    for(int i = 0; i < 7, i++){
+        if(this->alunos_turma[i].getMediaNotas() >= 7.0){
+            cout << "Aluno " << this->alunos_turma[i].getNome() << " está acima da média!";
+        }
+    }
 }
