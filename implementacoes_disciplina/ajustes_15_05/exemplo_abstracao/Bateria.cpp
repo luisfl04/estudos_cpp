@@ -14,7 +14,7 @@ class Bateria{
         return armazenamento_total;
     }
 
-    virtual void setLatenciaMedia(int armazenamento_total_passado, int latencia_base);
+    virtual void setLatenciaMedia(int armazenamento_total_passado);
 };
 
 class BateriaMoto: public Bateria{
@@ -26,8 +26,8 @@ class BateriaMoto: public Bateria{
         this->latencia_bateria = latencia_passada;
     }
 
-    void setLatenciaMedia(int armazenamento_total_passado, int latencia_base)  override{
-        this->latencia_media = (armazenamento_total_passado * latencia_base) / 2;
+    void setLatenciaMedia(int armazenamento_total_passado)  override{
+        this->latencia_media = (armazenamento_total_passado * this->latencia_bateria) / 2;
     }
 
 };
