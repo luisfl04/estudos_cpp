@@ -22,10 +22,11 @@ int getQuantidadeMemoriaSecundaria();
 //Setters:
 void setFrequenciaProcessador(float nova_frequencia);
 void setNumeroPortasUsb(int nova_quantidade);
+void setMemoriaSecundaria(float nova_quantidade);
 
 // Métodos abstratos:
 virtual void exibirConfiguracoesDispositivo();
-virtual void setQuantidadeMemoriaSecundaria();
+virtual void definirQuantidadeMemoriaSecundaria();
 };
 
 #endif

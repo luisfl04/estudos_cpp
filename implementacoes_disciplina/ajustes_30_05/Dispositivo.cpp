@@ -30,6 +30,8 @@ void Dispositivo::setNumeroPortasUsb(int nova_quantidade){
   this->numero_portas_usb = nova_quantidade;
 }
 
+void Dispositivo::setMemoriaSecundaria(float nova_quantidade){this->quantidade_memoria_secundaria = nova_quantidade;}
+
 // Métodos abstratos:
 void Dispositivo::exibirConfiguracoesDispositivo(){
   cout << "Dados genéricos do dispotivo:\n\n";
@@ -38,7 +40,7 @@ void Dispositivo::exibirConfiguracoesDispositivo(){
   cout << "Quantidade de memória secundária -> " << this->quantidade_memoria_secundaria << "\n";
 }
 
-void Dispositivo::setQuantidadeMemoriaSecundaria(){
+void Dispositivo::definirQuantidadeMemoriaSecundaria(){
   if(this->getFrequenciaProcessador() > 5.7){
     this->quantidade_memoria_secundaria = 1;
   }

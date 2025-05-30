@@ -1,11 +1,13 @@
-#include "Dispositivo.h"
-#include <iostream>
-using namespace std;
+#include "Notebook.h"
+
+
+
+
 
 int main(){
 
-  Dispositivo* meu_dispositivo = new Dispositivo(2.3, 4);
-  meu_dispositivo->setQuantidadeMemoriaSecundaria();
-  meu_dispositivo->exibirConfiguracoesDispositivo();
+  Notebook* meu_notebook = new Notebook(4.5, 2, 19.9);
+  meu_notebook->definirQuantidadeMemoriaSecundaria();
+  cout << "Quantidade de memória -> " <<  meu_notebook->getQuantidadeMemoriaSecundaria();
   return 1;
 }
