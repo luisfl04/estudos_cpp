@@ -28,7 +28,7 @@ void Notebook::exibirConfiguracoesDispositivo(){
 
 void Notebook::definirQuantidadeMemoriaSecundaria(){
   float quantidade_memoria_informada;
-  cout << "informe a quantidade de memoria de seu dispositivo -> ";
+  cout << "\ninforme a quantidade de memoria de seu dispositivo -> ";
   cin >> quantidade_memoria_informada;
   this->setMemoriaSecundaria(quantidade_memoria_informada);
 }
