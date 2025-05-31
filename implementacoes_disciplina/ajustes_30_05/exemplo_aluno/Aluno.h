@@ -28,8 +28,9 @@ class Aluno{
     float getNota(int numero_nota);
     void setMatricula(int novo_numero_matricula);
     void setNome(std::string novo_nome);
-    void setNota(int numero_nota, float nova_nota);
+    void setNotas(float primeira_nota, float segunda_nota, float terceira_nota);
     void setMediaNotas();
+    void setNotaEspecifica(int numero_nota, float valor_nota);
 };
 
 

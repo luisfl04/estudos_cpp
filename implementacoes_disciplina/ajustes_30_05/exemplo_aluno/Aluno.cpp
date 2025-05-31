@@ -42,6 +42,13 @@ void Aluno::setNome(string novo_nome){
     this->nome = novo_nome;
 }
 
-void Aluno::setNota(int numero_nota, float nova_nota){
-    this->notas[numero_nota] = nova_nota;
+void Aluno::setNotas(float primeira_nota, float segunda_nota, float terceira_nota){
+    this->notas[0] = primeira_nota;
+    this->notas[1] = segunda_nota;
+    this->notas[2] = terceira_nota;
+    this->setMediaNotas();
+}
+
+void Aluno::setNotaEspecifica(int numero_nota, float valor_nota){
+  this->notas[numero_nota] = valor_nota;
 }
